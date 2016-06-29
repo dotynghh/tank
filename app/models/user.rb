@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
 	attr_accessor :password_confirmation
 
 	validate :validate_password, on: :create
-	after_create :set_password
+	before_create :set_password
 
 
 	def validate_password
