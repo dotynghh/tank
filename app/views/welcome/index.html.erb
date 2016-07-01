@@ -1,5 +1,6 @@
-<h1>Welcome#index</h1>
-<p>Find me in app/views/welcome/index.html.erb</p>
-<% if session[:user_id] %>
-<%= @user.username %>
+<% if @user %>
+  <h1>欢迎你, <%= @user.username %></h1>
+<% else %>
+  <h1>Tank 首 页</h1>
+
 <% end -%>

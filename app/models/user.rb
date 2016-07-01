@@ -26,11 +26,22 @@ class User < ActiveRecord::Base
 			nil
 		end
 	end
-	
+
+	def self.user_isadmin? username, password
+		@user = User.find_by(username: username)
+		if @user and @user.password_istrue?(password) 
+			if @user.is_admin == true
+				@user
+			end
+		else
+			nil
+		end
+	end
+
 	def password_istrue? password
 		self.crypted_password == Digest::SHA256.hexdigest(password + self.salt)
 	end
-	
+
 	def newrandom(len)
   	newpass = ""
   	1.upto(len){ |i| newpass << rand(10).to_s}

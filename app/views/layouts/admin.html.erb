@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Tank</title>
+    <title>Tank后台管理</title>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -19,7 +19,7 @@
               <span class="fa fa-bars fa-lg"></span>
             </button>
             <a class="navbar-brand custom-logo-link" href="/">
-              Tank
+              Tank后台管理
             </a>
           </div>
 
@@ -30,11 +30,11 @@
                 <a href="/">Home</a>
               </li>
               <li>
-                <a href="<%= admin_root_path %>">后台管理</a>
+                <a href="<%= root_path %>">前台</a>
               </li>
               <% if logged_in? %>
-              	<li><%= link_to "#{current_user.username}, 退出", session_path(session[:user_id]), method: 'delete' %></li>
-              	<% else %>
+                <li><%= link_to "#{current_user.username}, 退出", session_path(session[:user_id]), method: 'delete' %></li>
+                <% else %>
               <li>
                 <a href="<%= new_session_path %>">登录</a>
               </li>
@@ -47,13 +47,6 @@
         <!-- /.container-->
       </nav>
     </header>
-
-    <div class="container body-offset">
-      <% if flash[:notice] %>
-        <div class="alert alert-info"><%= flash[:notice] %></div>
-      <% end -%>
-
-      <%= yield %>
-    </div>
+  <%= yield  %>
   </body>
 </html>
