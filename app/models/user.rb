@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
 
 	validate :validate_password, on: :create
 	before_create :set_password
-
+	has_many :carts
 
 	def validate_password
 		password_isblank?

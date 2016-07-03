@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="col-sm-2"></div>
+  <div class="col-sm-8">
+    <h1>产品列表</h1>
+    <%= link_to "所有产品", products_path, class: "btn btn-primary" %>
+    <table class="table">
+      <tr>
+      <th>产品名</th>
+      <th>数量</th>
+      <th>价格</th>
+      <th>编辑</th>
+      </tr>
+      <% @carts.each do |cart| %>
+      <tr>
+        <td><%= Product.find(cart.product_id).product_name %></td>
+        <td><%= cart.number %></td>
+        <td><%= Product.find(cart.product_id).price %></td>
+        <td><%= link_to "删除", cart_path(cart.id), method: :delete, class: "btn-default" %></td>
+      </tr>
+      <% end %>
+    </table>
+    <%= will_paginate @products %>
+  </div>
+  <div class="col-sm-2"></div>
+</div>

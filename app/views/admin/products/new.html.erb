@@ -1,17 +1,34 @@
-<h1>添加商品</h1>
+
 <div class="row">
   <div class="col-sm-2"></div>
   <div class="col-sm-8">
-    <%= form_for @product, url: admin_products_path, method: :post, do |f| %>
-    <div class="form-group">
-      <%= t.text_field :product_name, class: "form-control", placehold: "产品名" %>
-    </div>
-    <div class="form-group">
-      <%= t.text_field :description, class: "form-control", placehold: "产品描述" %>
-    </div>
-    <div class="form-group">
-      <%= t.text_field :price, class: "form-control", placehold: "价格" %>
-    </div>
+    <h1>添加商品</h1>
+    <%= link_to "所有产品", admin_products_path, class: "btn btn-primary" %>
+    <%= form_for @product, url: admin_products_path, method: :post do |f| %>
+      <div class="form-group">
+        <ul class="list-unstyled">
+          <% @product.errors.messages.values.flatten.each do |error| %>
+            <li><i class="fa fa-exclamation-circle"></i> <%= error %></li>
+          <% end -%>
+        </ul>
+      </div>
+      <div class="form-group">
+        <label class= "control-label" >产品名</label>
+        <%= f.text_field :product_name, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <label class= "control-label" >描述:</label>
+        <%= f.text_field :description, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <label class= "control-label" >价格:</label>
+        <%= f.text_field :price, class: "form-control" %>
+      </div>
+      <div class="form-group">
+        <label class= "control-label" >数量:</label>
+        <%= f.text_field :inventory, class: "form-control" %>
+      </div>
+      <%= f.submit "保存", class: "btn btn-primary"  %>
     <% end -%>
   </div>
   <div class="col-sm-2"></div>
