@@ -18,7 +18,9 @@
 				<td><%= product.description %></td>
 				<td><%= product.price %></td>
 				<td><%= product.inventory %></td>
-				<td><%= link_to "删除", admin_product_path(product.id), method: :delete %></td>
+				<td><%= link_to "删除", admin_product_path(product.id), method: :delete %>
+            <%= link_to "编辑", admin_product_path(product.id), method: :get %>
+        </td>
 			</tr>
 			<% end -%>
 		</table>

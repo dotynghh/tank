@@ -11,6 +11,22 @@ class Admin::ProductsController < ApplicationController
     @product = Product.new
   end
 
+  def show
+    @product =  Product.find params[:id]
+  end
+
+  def update
+    @product = Product.find params[:id]
+    @product.attributes = product_attr
+    if @product.save
+      flash[:notice] = "商品更新成功"
+      redirect_to admin_products_path
+    else
+      flash[:notice] = "商品更新失败"
+      render action: :show
+    end
+  end
+
   def create
     @product = Product.new(product_attr)
     if @product.save

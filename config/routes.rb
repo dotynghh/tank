@@ -6,11 +6,14 @@ Rails.application.routes.draw do
   root "welcome#index"
 
   resources :sessions
-  
+
   resources :products
-  
-  resources :carts
- 
+
+  resources :carts do
+    get :add_number, on: :member
+    get :minus_number, on: :member
+  end
+
   resources :users do
     get :user_active, on: :member
   end
