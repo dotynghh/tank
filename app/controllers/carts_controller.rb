@@ -11,6 +11,9 @@ class CartsController < ApplicationController
   def show
   end
 
+  def edit
+    @cart = current_user.carts.find params[:id]
+  end
 
   def new
     @cart = Cart.new
@@ -56,7 +59,7 @@ class CartsController < ApplicationController
 
 
   def update
-    
+
   end
 
 
