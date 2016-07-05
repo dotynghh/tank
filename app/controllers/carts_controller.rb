@@ -1,10 +1,13 @@
 class CartsController < ApplicationController
+
   before_filter :auth_user
+
   def index
     @carts = current_user.carts
       .page(params[:page] || 1)
       .per_page(params[:per_page] || 10)
       .order("id desc")
+    @@count = 0
   end
 
 
@@ -31,6 +34,7 @@ class CartsController < ApplicationController
       redirect_to :back
     end
   end
+
   def add_number
     @cart = current_user.carts.find params[:id]
     @cart.number += 1
@@ -75,5 +79,5 @@ class CartsController < ApplicationController
   end
 
   private
-    
+
 end

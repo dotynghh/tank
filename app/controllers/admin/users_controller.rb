@@ -1,5 +1,5 @@
-class Admin::UsersController < ApplicationController
-  layout "admin"
+class Admin::UsersController < Admin::BaseController
+
 
   def index
 

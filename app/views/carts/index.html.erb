@@ -20,6 +20,7 @@
           <%= cart.number %>
           <a href="<%= add_number_cart_path(cart.id) %>"><span class="glyphicon glyphicon-plus"></span></a>
         </td>
+
         <td><%= cart.number * Product.find(cart.product_id).price %></td>
         <td><%= link_to "删除", cart_path(cart.id), method: :delete, class: "btn btn-default" %>
         <%= link_to "编辑", edit_cart_path(cart.id), class: "btn btn-default" %>

@@ -1,5 +1,5 @@
-class Admin::ProductsController < ApplicationController
-	layout "admin"
+class Admin::ProductsController < Admin::BaseController
+	
   def index
     @products = Product
     	.page(params[:page] || 1)

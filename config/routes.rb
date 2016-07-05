@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-
+  resources :bases
   resources :carts
   get 'products/index'
 
