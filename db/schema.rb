@@ -11,7 +11,31 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160703132823) do
+ActiveRecord::Schema.define(version: 20160706014711) do
+
+  create_table "address_backups", force: :cascade do |t|
+    t.integer  "user_id",     limit: 4
+    t.integer  "phonenumber", limit: 4
+    t.string   "province",    limit: 255
+    t.string   "city",        limit: 255
+    t.string   "country",     limit: 255
+    t.string   "description", limit: 255
+    t.boolean  "is_default",              default: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+  end
+
+  create_table "addresses", force: :cascade do |t|
+    t.integer  "user_id",     limit: 4
+    t.integer  "phonenumber", limit: 4
+    t.string   "province",    limit: 255
+    t.string   "city",        limit: 255
+    t.string   "country",     limit: 255
+    t.string   "description", limit: 255
+    t.boolean  "is_default",              default: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
+  end
 
   create_table "carts", force: :cascade do |t|
     t.integer  "product_id", limit: 4
@@ -19,6 +43,17 @@ ActiveRecord::Schema.define(version: 20160703132823) do
     t.integer  "number",     limit: 4, default: 1
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
+  end
+
+  create_table "orders", force: :cascade do |t|
+    t.integer  "user_id",    limit: 4
+    t.integer  "product_id", limit: 4
+    t.integer  "address_id", limit: 4
+    t.integer  "price",      limit: 4
+    t.integer  "number",     limit: 4
+    t.integer  "counts",     limit: 4
+    t.datetime "created_at",           null: false
+    t.datetime "updated_at",           null: false
   end
 
   create_table "products", force: :cascade do |t|

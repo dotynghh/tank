@@ -33,7 +33,12 @@
                 <a href="<%= admin_root_path %>">后台管理</a>
               </li>
               <% if logged_in? %>
-              	<li><%= link_to "#{current_user.username}, 退出", session_path(session[:user_id]), method: 'delete' %></li>
+              	<li>
+                  <%= link_to "#{current_user.username}, 退出", session_path(current_user), method: 'delete' %>
+                </li>
+                <li>
+                <%= link_to "个人信息设置", user_path(current_user), method: 'get' %>
+                </li>
               	<% else %>
               <li>
                 <a href="<%= new_session_path %>">登录</a>
