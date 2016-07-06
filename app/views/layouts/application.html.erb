@@ -33,13 +33,13 @@
                 <a href="<%= admin_root_path %>">后台管理</a>
               </li>
               <% if logged_in? %>
-              	<li>
-                  <%= link_to "#{current_user.username}, 退出", session_path(current_user), method: 'delete' %>
-                </li>
-                <li>
-                <%= link_to "个人信息设置", user_path(current_user), method: 'get' %>
-                </li>
-              	<% else %>
+              <li>
+                <%= link_to "#{current_user.username}, 退出", session_path(current_user), method: 'delete' %>
+              </li>
+              <li>
+                <%= link_to "setting", user_path(current_user), method: 'get' %>
+              </li>
+              <% else %>
               <li>
                 <a href="<%= new_session_path %>">登录</a>
               </li>
@@ -59,5 +59,7 @@
       <% end -%>
       <%= yield %>
     </div>
+    <script src="http://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="http://cdn.bootcss.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
   </body>
 </html>
