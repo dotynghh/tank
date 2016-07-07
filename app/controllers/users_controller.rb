@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+	layout "usersetting"
 	def show
 		@user = current_user
 	end

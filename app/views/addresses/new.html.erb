@@ -1,0 +1,27 @@
+<h1>添加一个新地址</h1>
+<h2>选择</h2>
+
+<div class="row">
+	<%= form_for @address, url: addresses_path, method: :post do |f| %>
+		<div class="form-group">
+				<label class= "control-label" >收货人姓名:</label>
+				<%= f.text_field :consignee, class: "form-control" %>
+		</div>
+		<div class="form-group">
+				<label class= "control-label" >联系电话:</label>
+				<%= f.text_field :phonenumber, class: "form-control" %>
+		</div>
+
+		<div class="city-group">
+		  <%= select_tag "province", options_for_select(ChinaCity.list          , '440000')   , class: 'city-select', prompt: "--省份--" %>
+		  <%= select_tag "city"    , options_for_select(ChinaCity.list('440000'), '440300')   , class: 'city-select', prompt: "--城市--" %>
+		  <%= select_tag "country", options_for_select(ChinaCity.list('440300'), '440305')   , class: 'city-select', prompt: "--地区--" %>
+		</div>
+
+		<div class="form-group">
+				<label class= "control-label" >详细地址:</label>
+				<%= f.text_area :description, class: "form-control" %>
+		</div>
+		<%= f.submit "保存", class: "btn btn-primary" %>	
+	<% end -%>
+</div>

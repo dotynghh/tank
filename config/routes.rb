@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+
+  mount ChinaCity::Engine => '/china_city'
+  
+  resources :addresses
   resources :bases
   resources :carts
   get 'products/index'
