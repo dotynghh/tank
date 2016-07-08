@@ -9,7 +9,8 @@ Rails.application.routes.draw do
 
   root "welcome#index"
 
-  resources :sessions
+  resources :sessions 
+  delete "logout" => "sessions#destroy"
 
   resources :products
 

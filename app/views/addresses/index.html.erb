@@ -13,7 +13,9 @@
 				<td><%= address.consignee %></td>
 				<td><%= address.phonenumber %></td>
 				<td><%= ChinaCity.get(address.province) %><%= ChinaCity.get(address.city) %><%= ChinaCity.get(address.country) %><%= address.description %></td>
-				<td></td>
+				<td>
+					<%= link_to "删除", address, method: :delete, class: "btn btn-default" %>
+				</td>
 			</tr>
 			<% end -%>
 		</table>

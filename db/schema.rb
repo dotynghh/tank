@@ -11,11 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160707064938) do
+ActiveRecord::Schema.define(version: 20160708024556) do
 
   create_table "address_backups", force: :cascade do |t|
     t.integer  "user_id",     limit: 4
-    t.string   "phonenumber", limit: 255
     t.string   "province",    limit: 255
     t.string   "city",        limit: 255
     t.string   "country",     limit: 255
@@ -24,11 +23,11 @@ ActiveRecord::Schema.define(version: 20160707064938) do
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
     t.string   "consignee",   limit: 255,                 null: false
+    t.string   "phonenumber", limit: 255,                 null: false
   end
 
   create_table "addresses", force: :cascade do |t|
     t.integer  "user_id",     limit: 4
-    t.string   "phonenumber", limit: 255
     t.string   "province",    limit: 255
     t.string   "city",        limit: 255
     t.string   "country",     limit: 255
@@ -37,6 +36,7 @@ ActiveRecord::Schema.define(version: 20160707064938) do
     t.datetime "created_at",                              null: false
     t.datetime "updated_at",                              null: false
     t.string   "consignee",   limit: 255,                 null: false
+    t.string   "phonenumber", limit: 255,                 null: false
   end
 
   create_table "carts", force: :cascade do |t|
@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20160707064938) do
     t.datetime "created_at",                                   null: false
     t.datetime "updated_at",                                   null: false
     t.boolean  "is_admin",                     default: false, null: false
+    t.string   "default_addr",     limit: 255,                 null: false
   end
 
 end

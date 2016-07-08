@@ -1,6 +1,7 @@
 class AddressesController < ApplicationController
 	layout 'usersetting'
-
+	before_filter :auth_user
+	
 	def index
 		@addresses = current_user
 			.addresses
@@ -25,6 +26,16 @@ class AddressesController < ApplicationController
 			flash[:notice] = "地址添加失败"
 			render action: :new
 		end
+	end
+
+	def destroy
+		if Address.destroy params[:id]
+			flash[:notice] = "地址删除成功"
+			redirect_to addresses_path
+		else
+			flash[:notice] = "地址删除失败"
+			redirect_to :back
+		end	
 	end
 
 	private
