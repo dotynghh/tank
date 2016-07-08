@@ -2,7 +2,9 @@ Rails.application.routes.draw do
 
   mount ChinaCity::Engine => '/china_city'
   
-  resources :addresses
+  resources :addresses do
+    get :be_addr_default, on: :member
+  end
   resources :bases
   resources :carts
   get 'products/index'

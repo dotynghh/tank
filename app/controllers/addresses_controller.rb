@@ -10,6 +10,18 @@ class AddressesController < ApplicationController
 			.order("id desc")
 	end
 
+	def be_addr_default
+		if current_user.default_addr = params[:id]
+			if current_user.save
+				flash[:notice] = "设置成功"
+				redirect_to addresses_path
+			else
+				flash[:notice] = "设置失败"
+				redirect_to addresses_path
+			end
+		end
+	end
+
 	def new
 		@address = Address.new
 	end

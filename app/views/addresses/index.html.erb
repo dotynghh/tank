@@ -3,6 +3,7 @@
 		<%= link_to "添加地址", new_address_path, class: "btn btn-primary" %>
 		<table class="table">
 			<tr>
+				<th>默认地址</th>
 				<th>收货人姓名</th>
 				<th>联系电话</th>
 				<th>收货地址</th>
@@ -10,11 +11,20 @@
 			</tr>
 			<% @addresses.each do | address | %>
 			<tr>
+				<td>
+					<% if current_user.default_addr.to_i == address.id %>
+					<a>yes</a>
+					<% end -%>
+				</td>
 				<td><%= address.consignee %></td>
 				<td><%= address.phonenumber %></td>
 				<td><%= ChinaCity.get(address.province) %><%= ChinaCity.get(address.city) %><%= ChinaCity.get(address.country) %><%= address.description %></td>
 				<td>
 					<%= link_to "删除", address, method: :delete, class: "btn btn-default" %>
+					<%= link_to "设为默认地址",
+						be_addr_default_address_path(address.id),
+						method: :get,
+						class: "btn btn-primary" %>
 				</td>
 			</tr>
 			<% end -%>
