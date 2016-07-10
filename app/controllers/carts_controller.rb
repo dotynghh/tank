@@ -1,5 +1,5 @@
 class CartsController < ApplicationController
-
+  layout 'usersetting'
   before_filter :auth_user
 
   def index
@@ -7,7 +7,7 @@ class CartsController < ApplicationController
       .page(params[:page] || 1)
       .per_page(params[:per_page] || 10)
       .order("id desc")
-    @@count = 0
+
   end
 
 

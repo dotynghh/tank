@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160708024556) do
+ActiveRecord::Schema.define(version: 20160710075017) do
 
   create_table "address_backups", force: :cascade do |t|
     t.integer  "user_id",     limit: 4
@@ -19,11 +19,10 @@ ActiveRecord::Schema.define(version: 20160708024556) do
     t.string   "city",        limit: 255
     t.string   "country",     limit: 255
     t.string   "description", limit: 255
-    t.boolean  "is_default",              default: false
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
-    t.string   "consignee",   limit: 255,                 null: false
-    t.string   "phonenumber", limit: 255,                 null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "consignee",   limit: 255, null: false
+    t.string   "phonenumber", limit: 255, null: false
   end
 
   create_table "addresses", force: :cascade do |t|
@@ -32,11 +31,10 @@ ActiveRecord::Schema.define(version: 20160708024556) do
     t.string   "city",        limit: 255
     t.string   "country",     limit: 255
     t.string   "description", limit: 255
-    t.boolean  "is_default",              default: false
-    t.datetime "created_at",                              null: false
-    t.datetime "updated_at",                              null: false
-    t.string   "consignee",   limit: 255,                 null: false
-    t.string   "phonenumber", limit: 255,                 null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
+    t.string   "consignee",   limit: 255, null: false
+    t.string   "phonenumber", limit: 255, null: false
   end
 
   create_table "carts", force: :cascade do |t|

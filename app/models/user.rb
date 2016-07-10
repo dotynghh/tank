@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 	
 	has_many :carts
 	has_many :addresses
-
+	has_many :orders
 	def validate_password
 		password_isblank?
 		password_notsame?
