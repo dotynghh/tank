@@ -41,7 +41,7 @@ class Order < ActiveRecord::Base
 										:address_id => address_backup.id }
 	end
 
-	def address_attr default_addr   #过滤默认地址属性
+	def address_attr default_addr   #设置默认地址属性, 复制地址
 		@address = Address.find default_addr
 		address_attr = {:user_id => @address.user_id,
 										:province => @address.province,
