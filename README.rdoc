@@ -4,7 +4,7 @@
 
 * 注册页面填写实际邮箱验证，也可以手动激活
 
-```ruby
+``` ruby
 
 rails c 
 user = User.last
@@ -15,7 +15,7 @@ user.save
 
 * 后台管理，需要手动设置管理员
 
-```ruby
+``` ruby
 
 rails c 
 user = User.last
