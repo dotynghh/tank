@@ -4,6 +4,7 @@
 
 * 注册页面填写实际邮箱验证，也可以手动激活
 
+
 ```Ruby
 
 rails c 
@@ -15,6 +16,7 @@ user.save
 
 * 后台管理，需要手动设置管理员
 
+
 ```Ruby
 
 rails c 
@@ -23,4 +25,5 @@ user.is_admin = true
 user.save
 
 ```
+
 * 目前为止还没更多的介绍
