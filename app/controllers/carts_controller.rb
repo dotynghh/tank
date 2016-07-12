@@ -3,11 +3,12 @@ class CartsController < ApplicationController
   before_filter :auth_user
 
   def index
-    @carts = current_user.carts
+    @carts = Cart
       .page(params[:page] || 1)
       .per_page(params[:per_page] || 10)
       .order("id desc")
-
+      .where(user_id: current_user.id)
+      .includes(:user,:product)
   end
 
 

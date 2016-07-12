@@ -4,24 +4,19 @@ class OrdersController < ApplicationController
 	before_filter :auth_user
 
 	def index
-    @orders = current_user.orders
+    @orders = Order
       .page(params[:page] || 1)
       .per_page(params[:per_page] || 10)
-      .order("id desc")	
+      .order("id desc")
+      .where(user_id: current_user.id)
+      .includes(:user)
 	end
 
 	def create
-		state = true
-		current_user.carts.each do | cart |
-			@order = Order.new
-			@order.make_orders_ok? cart, current_user.id, @order.clone_address_ok?(current_user.default_addr.to_i), state
-			if state
-				@order.destroy_carts cart.id
-			else
-				break
-			end
-		end
-		if state
+		if current_user.carts.blank?
+			flash[:notice] = "订单创建失败,请购买商品"
+			redirect_to :back
+		elsif Order.carts_to_orders current_user.id 
 			flash[:notice] = "订单创建成功"
 			redirect_to orders_path
 		else

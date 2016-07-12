@@ -21,12 +21,12 @@
 				<td><%= order.counts %></td>
 				<td><%= order.address_id %></td>
 				<td>
-					<%= AddressBackup.find(order.address_id).consignee %>
-					<%= AddressBackup.find(order.address_id).phonenumber %>
+					<%= order.address.consignee %>
+					<%= order.address.phonenumber %>
 					<%= ChinaCity.get(AddressBackup.find(order.address_id).province) %>
 					<%= ChinaCity.get(AddressBackup.find(order.address_id).city) %>
 					<%= ChinaCity.get(AddressBackup.find(order.address_id).country) %>
-					<%= AddressBackup.find(order.address_id).description %></td>
+					<%= order.address.description %></td>
 				<td>
 				<td><%= link_to "删除", order_path(order.id), method: :delete, class: "btn btn-primary" %></td>
 			</tr>

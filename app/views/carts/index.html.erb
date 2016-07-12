@@ -14,16 +14,16 @@
       <% counts = 0 %>
       <% @carts.each do |cart| %>
       <tr>
-        <td><%= Product.find(cart.product_id).product_name %></td>
-        <td>$:<%= Product.find(cart.product_id).price %></td>
+        <td><%= cart.product.product_name %></td>
+        <td>$:<%= cart.product.price %></td>
         <td>
           <a href="<%= minus_number_cart_path(cart.id) %>"><span class="glyphicon glyphicon-minus"></span></a>
           <%= cart.number %>
           <a href="<%= add_number_cart_path(cart.id) %>"><span class="glyphicon glyphicon-plus"></span></a>
         </td>
 
-        <td><%= cart.number * Product.find(cart.product_id).price %> 元</td>
-        <% counts += cart.number * Product.find(cart.product_id).price %>
+        <td><%= cart.number * cart.product.price %> 元</td>
+        <% counts += cart.number * cart.product.price %>
         <td><%= link_to "删除", cart_path(cart.id), method: :delete, class: "btn btn-default" %>
         <%= link_to "编辑", edit_cart_path(cart.id), class: "btn btn-default" %>
         </td>
@@ -33,11 +33,11 @@
         <td></td>
         <td>共计</td>
         <td><%= counts %> 元</td>
-        <td><%= link_to "结算", orders_path(@carts), method: :post ,class: "btn btn-primary" %></td>
+        <td><%= link_to "结算", orders_path, method: :post ,class: "btn btn-primary" %></td>
       </tr>
     </table>
 
-    <%= will_paginate @products %>
+    <%= will_paginate @carts %>
   </div>
   <div class="col-sm-2"></div>
 </div>

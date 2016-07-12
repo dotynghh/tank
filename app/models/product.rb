@@ -5,5 +5,7 @@ class Product < ActiveRecord::Base
 	validates :price, presence: { message: "价格不能为空"}
 	validates :inventory, presence: { message: "库存不能为空"}
 
-
+	has_many :carts
+	has_many :orders
+	belongs_to :user
 end

@@ -3,11 +3,12 @@ class AddressesController < ApplicationController
 	before_filter :auth_user
 	
 	def index
-		@addresses = current_user
-			.addresses
+		@addresses = Address
 			.page(params[:page] || 1)
 			.per_page(params[:per_page] || 10)
 			.order("id desc")
+			.where(user_id: current_user.id)
+			.includes(:user)
 	end
 
 	def be_addr_default
