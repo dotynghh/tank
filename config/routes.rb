@@ -2,12 +2,12 @@ Rails.application.routes.draw do
 
   mount ChinaCity::Engine => '/china_city'
   
-  resources :orders
+  resources :orders, only: [:index, :create, :destroy]
 
   resources :addresses do
     get :be_addr_default, on: :member
   end
-  resources :bases
+  
   resources :carts
   get 'products/index'
 
@@ -18,10 +18,7 @@ Rails.application.routes.draw do
 
   resources :products
 
-  resources :carts do
-    get :add_number, on: :member
-    get :minus_number, on: :member
-  end
+  resources :carts 
 
   resources :users do
     get :user_active, on: :member
@@ -29,8 +26,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     root "sessions#new"
-    resources :users
-    resources :sessions
+    #resources :bases
+    #resources :users
+    resources :sessions, only: [:index, :create]
     resources :products
   end
 end

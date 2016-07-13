@@ -5,6 +5,7 @@ class Admin::ProductsController < Admin::BaseController
     	.page(params[:page] || 1)
     	.per_page(params[:per_page] || 10)
     	.order("id desc")
+      .includes(:user)
   end
 
   def new

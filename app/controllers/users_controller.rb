@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
+	
 	layout "usersetting"
+
 	def show
 		@user = current_user
 	end
@@ -16,15 +18,16 @@ class UsersController < ApplicationController
 				flash[:notice] = "注册成功，请登录"
 				Usermailer.signup(@user).deliver_now
 				redirect_to new_session_path
-
 		else
 			flash[:notice] = "注册失败,请重新注册"
 			render action: :new
 		end
+
 	end
 
 	def user_active
 		@user = User.find_by(active_code: params[:id])
+
 		unless @user.blank?
 			if @user.is_active?
 				flash[:notice] = "已激活，请勿重新激活"
@@ -39,6 +42,7 @@ class UsersController < ApplicationController
   		flash[:notice] = "激活失败"
     	redirect_to new_user_path
 		end
+		
 	end
 
 	private

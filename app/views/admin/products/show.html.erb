@@ -4,7 +4,7 @@
   <div class="col-sm-8">
     <h1>查看单个商品</h1>
     <%= link_to "所有产品", admin_products_path, class: "btn btn-primary" %>
-    <%= form_for @product, url: admin_product_path, method: :put do |f| %>
+    <%= form_for @product, url: admin_product_path(@product.id), method: :put do |f| %>
       <div class="form-group">
         <ul class="list-unstyled">
           <% @product.errors.messages.values.flatten.each do |error| %>

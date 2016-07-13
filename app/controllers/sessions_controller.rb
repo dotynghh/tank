@@ -20,4 +20,5 @@ class SessionsController < ApplicationController
 		flash[:notice] = "Exit the success."
 		redirect_to root_path
 	end
+	
 end

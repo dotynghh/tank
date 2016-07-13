@@ -17,9 +17,9 @@
         <td><%= cart.product.product_name %></td>
         <td>$:<%= cart.product.price %></td>
         <td>
-          <a href="<%= minus_number_cart_path(cart.id) %>"><span class="glyphicon glyphicon-minus"></span></a>
+          <a href="<%= cart_path(cart.id) %>" data-method="put" ><span class="glyphicon glyphicon-minus"></span></a>
           <%= cart.number %>
-          <a href="<%= add_number_cart_path(cart.id) %>"><span class="glyphicon glyphicon-plus"></span></a>
+          <a href="<%= cart_path(cart.id, plus: 'plus') %>" data-method="put"><span class="glyphicon glyphicon-plus"></span></a>
         </td>
 
         <td><%= cart.number * cart.product.price %> 元</td>
