@@ -16,13 +16,16 @@ class OrdersController < ApplicationController
 		if current_user.carts.blank?
 			flash[:notice] = "订单创建失败,请购买商品"
 			redirect_to :back
-		elsif Order.carts_to_orders current_user.id 
+		elsif current_user.default_addr.blank?
+			flash[:notice] = "请设置收货地址"
+			redirect_to addresses_path
+		elsif Order.carts_to_orders current_user.id
 			flash[:notice] = "订单创建成功"
 			redirect_to orders_path
 		else
 			flash[:notice] = "订单创建失败"
-			redirect_to :back	
-		end	
+			redirect_to :back
+		end
 	end
 
 	def destroy

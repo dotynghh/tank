@@ -30,9 +30,7 @@
               <li>
                 <a href="/">Home</a>
               </li>
-              <li>
-                <a href="<%= admin_root_path %>">后台管理</a>
-              </li>
+
               <% if logged_in? %>
               <li>
                 <%= link_to "#{current_user.username}, 退出", session_path(current_user), method: :delete %>

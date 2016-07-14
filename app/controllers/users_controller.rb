@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-	
+
 	layout "usersetting"
 
 	def show
@@ -42,7 +42,7 @@ class UsersController < ApplicationController
   		flash[:notice] = "激活失败"
     	redirect_to new_user_path
 		end
-		
+
 	end
 
 	private
