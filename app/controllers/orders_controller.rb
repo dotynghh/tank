@@ -9,7 +9,7 @@ class OrdersController < ApplicationController
       .per_page(params[:per_page] || 10)
       .order("id desc")
       .where(user_id: current_user.id)
-      .includes(:user)
+      .includes(:user, :address)
 	end
 
 	def create

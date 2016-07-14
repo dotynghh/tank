@@ -4,26 +4,28 @@
 
 * 注册页面填写实际邮箱验证，也可以手动激活
 
+* 7.1.1 实现用户登录注册功能
 
-```Ruby
+* 7.1.2 优化用户注册----密码加密
 
-rails c 
-user = User.last
-user.is_active = true
-user.save
+* 7.2.1 实现用户注册邮箱验证功能
 
-```
+* 7.2.2 邮箱验证产生八位随机数，用于验证
 
-* 后台管理，需要手动设置管理员
+* 7.3 admin用户后台管理，商品的CRUD
 
+* 7.4.1 实现用户查看商品添加购物车功能
 
-```Ruby
+* 7.5 用户设置默认收获地址，引用gem "china-city"，三级菜单选择地址
 
-rails c 
-user = User.last
-user.is_admin = true
-user.save
+* 7.6 用户结账，创建订单
 
-```
+* 7.7.1 优化数据库查询，解决N+1问题
 
-* 目前为止还没更多的介绍
+* 7.7.2 在没有任何改动的情况下出现问题， method: :delete会 指向 show这个action，导致无法删除购物车商品，无法退出登录
+
+* 7.7.3 检查routes 文件， gemfile， application.rb, application.js 均无问题， “问题被解决”
+
+* 7.13.1 重写用户订单的创建，避免controller过于臃肿
+
+* 7.13.2 重写购物车商品数量加减方法，删除自定义plus，minus方法， 使用update更新数据
