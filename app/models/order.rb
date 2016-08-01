@@ -1,4 +1,8 @@
 class Order < ActiveRecord::Base
+
+	validates :product_id, presence: { message: "请添加商品继续结算"}
+	validates :address_id, presence: { message: "收获地址不能为空"}
+
 	belongs_to :user
 	belongs_to :product
 	belongs_to :address, class_name: "AddressBackup"

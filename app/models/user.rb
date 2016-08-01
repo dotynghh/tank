@@ -8,12 +8,12 @@ class User < ActiveRecord::Base
 
 	validate :validate_password, on: :create
 	before_create :set_password
-	
+
 	has_many :carts
 	has_many :addresses
 	has_many :orders
 	has_many :products
-	
+
 	def validate_password
 		password_isblank?
 		password_notsame?
