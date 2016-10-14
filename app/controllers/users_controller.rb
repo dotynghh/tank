@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 	def create
 		@user = User.new(user_attr)
 		@user.active_code = @user.newrandom(8)
-
+		@user.default_addr = 'q'
 		if @user.save
 				flash[:notice] = "注册成功，请登录"
 				Usermailer.signup(@user).deliver_now
